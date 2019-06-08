@@ -13,5 +13,11 @@ pipeline {
                 sh 'mvn -v'
             }
         }  
+
+        stage('Building project') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }  
     }
 }
