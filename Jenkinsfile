@@ -19,12 +19,7 @@ pipeline {
     post {
         always {            
             junit 'target/surefire-reports/*.xml'
-            jacoco( 
-                  execPattern: 'target/*.exec',
-                  classPattern: 'target/classes',
-                  sourcePattern: 'src/main/java',
-                  exclusionPattern: 'src/test*'
-            )
+            jacoco 'target/site/jacoco/jacoco.xml'
         }
         success {
             archive "target/calc-jsf-1.0.war"
