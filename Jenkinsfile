@@ -16,4 +16,12 @@ pipeline {
             }
         }   
     }
+    post {
+        always {            
+            junit 'target/surefire-reports/*.xml'
+        }
+        success {
+            archive "target/calc-jsf-1.0.war"
+        }
+    }
 }
