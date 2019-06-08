@@ -1,11 +1,15 @@
 pipeline {
-    agent {
-        docker { image 'node:7-alpine' }
-    }
+    agent { dockerfile true }
+        
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'echo "from image"'
+                sh 'pwd'
+            }
+            
+            steps {
+                sh 'asadmin start-domain domain1'
             }
         }
     }
