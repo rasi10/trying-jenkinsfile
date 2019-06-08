@@ -10,7 +10,9 @@ pipeline {
         stage('checking directories') {
             steps {
                 sh 'pwd'
-                sh 'ls'
+                sh 'ls target/'
+                sh 'ls target/site/jacoco/'
+                sh 'ls target/surefire-reports/'
             }
         }   
     }
