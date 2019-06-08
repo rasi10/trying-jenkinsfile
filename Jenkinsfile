@@ -4,14 +4,8 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'asadmin start-domain domain1'
+                sh 'echo $PATH'
             }
-        }
-        stage('Test2') {
-            steps {
-                 sh 'echo "from image"'
-                sh 'pwd'
-            }
-        }       
+        }      
     }
 }
