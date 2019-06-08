@@ -19,7 +19,15 @@ pipeline {
     post {
         always {            
             junit 'target/surefire-reports/*.xml'
-            jacoco 'target/site/jacoco/jacoco.xml'
+            publishHTML([
+                allowMissing          : false,
+                alwaysLinkToLastBuild : false,
+                keepAll               : true,
+                reportDir             : 'target/site/jacoco/',
+                reportFiles           : 'index.html',
+                reportTitles          : "Tests coverage",
+                reportName            : "Tests coverage"
+            ])
         }
         success {
             archive "target/calc-jsf-1.0.war"
