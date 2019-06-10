@@ -1,10 +1,10 @@
 pipeline {
-    agent none
+    agent any
     parameters {
         choice(name: 'DEPLOY_ENV', choices: ['int', 'stage', 'prod'],  description: 'The target environment to deploy artifacts')
     }
     stages {       
-        stage('Building project') {
+        stage('Building project, running tests and publishing test results') {
             agent { 
                 docker{ image 'rasilva1986/java-maven:alm'}
             }   
@@ -30,7 +30,7 @@ pipeline {
             } 
         }         
        
-        stage('Deploying'){
+        stage('Deploying artifacts to selected target'){
             agent any
             steps{
                 sh 'export PATH=/opt/glassfish-4.1.1/bin/asadmin:$PATH'
