@@ -35,7 +35,7 @@ pipeline {
             agent any
             steps{
                 sh 'export PATH=/opt/glassfish-4.1.1/bin/asadmin:$PATH'
-                sh 'asadmin deploy --force target/calc-jsf-1.0.war'
+                sh 'asadmin --port 4848 deploy --force --name calculator-${DEPLOY_ENV} --contextroot calculator-${DEPLOY_ENV} target/calc-jsf-1.0.war'
             }
         } 
     }
