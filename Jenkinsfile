@@ -1,7 +1,7 @@
 pipeline {
     agent { dockerfile true }
     parameters {
-        string (name: 'Environment', defaultvalue: 'int', description: 'The target environment')   
+        string (name: 'Environment', defaultValue: 'int', description: 'The target environment')   
     }
     stages {
         stage('Building project') {
