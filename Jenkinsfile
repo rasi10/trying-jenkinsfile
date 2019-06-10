@@ -1,6 +1,8 @@
 pipeline {
     agent { dockerfile true }
-        
+    parameters {
+        string (name: 'Environment', defaultvalue: 'int', description: 'The target environment')   
+    }
     stages {
         stage('Building project') {
             steps {
@@ -31,6 +33,8 @@ pipeline {
         }
         success {
             archive "target/calc-jsf-1.0.war"
+            sh 'export PATH=/opt/glassfish-4.1.1/bin:$PATH'
+            sh 'asadmin deploy --force target/calc-jsf-1.0.war'
         }
     }
 }
